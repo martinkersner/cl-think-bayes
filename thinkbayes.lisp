@@ -24,6 +24,14 @@
   (if pred
     (setf (gethash value (get-val-prob pmf)) (+ prob increment))))
 
+(defgeneric mult (pmf value multiplier)
+  (:documentation ""))
+
+(defmethod mult ((pmf probability-mass-function) value multiplier)
+  (multiple-value-setq (prob pred) (gethash value (get-val-prob pmf))) 
+  (if pred
+    (setf (gethash value (get-val-prob pmf)) (* prob multiplier))))
+
 (defgeneric total (pmf)
   (:documentation ""))
 

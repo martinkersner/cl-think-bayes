@@ -2,20 +2,32 @@
 ;;;; 2017/06/04
 
 (defclass cookie-problem (probability-mass-function)
-  ((hypos :accessor get-hypos
-          :initarg :hypos)))
+  ((hypos-lst :initarg :hypos)
+   (hypos     :accessor get-hypos)))
 
 (defmethod initialize-instance :after ((cp cookie-problem) &key)
-  (let ((hypos (get-hypos cp)))
+  (let ((hypos-lst (slot-value cp 'hypos-lst))
+        (hypos (make-hash-table))
+        (hypos-part nil))
 
-    (maphash #'(lambda (h val-prob-lst) (set-value cp h 1)) hypos)
+    (mapcar #'(lambda (hypo) (progn
+                            (setq hypos-part (make-hash-table))
+                            (mapcar #'(lambda (d)
+                                        (setf (gethash (car d) hypos-part) (cadr d)))
+                                    (cadr hypo))
+                            (setf (gethash (first hypo) hypos) hypos-part)))
+            hypos-lst)
+
+    (maphash #'(lambda (hypo val-prob-lst) (set-value cp hypo 1)) hypos)
+    (setf (get-hypos cp) hypos)
+
     (normalize cp)))
 
 (defmethod likelihood ((cp cookie-problem) data hypo)
   (multiple-value-setq (h hypos-found) (gethash hypo (get-hypos cp)))
-  (multiple-value-setq (d data-found) (gethash data h))
+  (multiple-value-setq (prob prob-found) (gethash data h))
 
-  d)
+  prob)
 
 (defmethod update ((cp cookie-problem) data)
   (maphash #'(lambda (h val-prob-lst)

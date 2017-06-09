@@ -2,6 +2,7 @@
 ;;;; 2017/06/04
 ;;;;
 ;;;; COOKIE PROBLEM
+;;;; (description taken from Think Bayes (http://greenteapress.com/wp/think-bayes/)
 ;;;; Suppose there are two bowls of cookies. Bowl 1 contains 30 vanilla cookies
 ;;;; and 10 chocolate cookies. Bowl 2 contains 20 of each. Now suppose you
 ;;;; choose one of the bowls at random and, without looking, select a cookie

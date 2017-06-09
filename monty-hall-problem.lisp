@@ -18,6 +18,7 @@
 ;;;; Then Monty offers you the option to stick with your original choice or
 ;;;; switch to the one remaining unopened door.
 ;;;; The question is, should you “stick” or “switch” or does it make no difference?
+;;;; Monty chooses Door B and there is no car there.
 
 (defparameter *pmf* (make-instance 'probability-mass-function))
 

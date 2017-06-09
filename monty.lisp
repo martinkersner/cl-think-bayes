@@ -1,7 +1,7 @@
 ;;;; Martin Kersner, m.kersner@gmail.com
 ;;;; 2017/06/09 
 
-(defclass monty (probability-mass-function)
+(defclass monty (suite)
   ((hypos-lst :initarg :hypos)
    (hypos     :accessor get-hypos)))
 
@@ -21,10 +21,3 @@
     (if (eq hypo 'A)
       0.5
       1)))
-
-(defmethod update ((m monty) data)
-  (maphash #'(lambda (h prob-val-lst)
-               (mult m h (likelihood m data h)))
-           (get-hypos m))
-  
-  (normalize m))

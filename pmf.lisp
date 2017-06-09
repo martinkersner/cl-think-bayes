@@ -3,8 +3,9 @@
 ;;;;
 ;;;; Common Lisp version of Think Bayes
 ;;;; https://github.com/AllenDowney/ThinkBayes
+;;;;
+;;;; PROBABILITY MASS FUNCTION
 
-;;; PROBABILITY MASS FUNCTION
 (defclass probability-mass-function ()
   ((values :accessor get-val-prob
            :initform (make-hash-table :test 'equal))))

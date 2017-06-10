@@ -9,3 +9,6 @@
            (get-hypos s))
   
   (normalize s))
+
+(defmethod print-solution ((s suite))
+  (print (get-val-prob s)))

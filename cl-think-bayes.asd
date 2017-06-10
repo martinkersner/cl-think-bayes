@@ -15,4 +15,5 @@
   :components ((:file "pmf")
                             (:file "suite")
                             (:file "monty")
-                            (:file "cookie")))
+                            (:file "cookie")
+                            (:file "m-and-m")))

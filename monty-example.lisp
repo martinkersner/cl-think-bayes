@@ -4,4 +4,4 @@
 (setf hypos '(A B C))
 (setf m (make-instance 'monty :hypos hypos))
 (update m 'B)
-(print (get-val-prob m))
+(print-solution m)

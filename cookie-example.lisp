@@ -10,4 +10,4 @@
 
 (setf cp (make-instance 'cookie :hypos hypos))
 (update cp 'vanilla)
-(print (get-val-prob cp))
+(print-solution cp)

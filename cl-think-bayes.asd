@@ -16,4 +16,5 @@
                             (:file "suite")
                             (:file "monty")
                             (:file "cookie")
-                            (:file "m-and-m")))
+                            (:file "m-and-m")
+                            (:file "dice")))

@@ -7,14 +7,17 @@
                   (red    20)
                   (green  10)
                   (orange 10)
-                  (tan    10)))
+                  (tan    10)
+                  (blue    0)))
+
                (mix96
-                 ((brown  24)
-                  (yellow 20)
-                  (red    16)
-                  (green  14)
-                  (orange 13)
-                  (tan    13)))))
+                 ((brown  13)
+                  (yellow 14)
+                  (red    13)
+                  (green  20)
+                  (orange 16)
+                  (tan    0)
+                  (blue   24)))))
 
 (setf hypos '((A
                 ((bag1 mix94)

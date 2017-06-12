@@ -11,6 +11,12 @@ Source code from this repository requires [asdf](https://gitlab.common-lisp.net/
 git clone https://github.com/martinkersner/cl-think-bayes.git
 ```
 
+## Initialization
+Before running any code from this repository you must run following code.
+```common-lisp
+(load "init")
+```
+
 ## Chapter 1 - Bayes's Theorem
 * [Cookie Problem](https://github.com/martinkersner/cl-think-bayes/blob/master/cookie-problem.lisp)
 * [Monty Hall Problem](https://github.com/martinkersner/cl-think-bayes/blob/master/monty-hall-problem.lisp)
@@ -45,21 +51,17 @@ git clone https://github.com/martinkersner/cl-think-bayes.git
                   (red    20)
                   (green  10)
                   (orange 10)
-                  (tan    10)))
-               (mix96
-                 ((brown  24)
-                  (yellow 20)
-                  (red    16)
-                  (green  14)
-                  (orange 13)
-                  (tan    13)))))
+                  (tan    10)
+                  (blue    0)))
 
-(setf hypos '((A
-                ((bag1 mix94)
-                 (bag2 mix96)))
-              (B
-                ((bag1 mix96)
-                 (bag2 mix94)))))
+               (mix96
+                 ((brown  13)
+                  (yellow 14)
+                  (red    13)
+                  (green  20)
+                  (orange 16)
+                  (tan    0)
+                  (blue   24)))))
 
 (setf m (make-instance 'm-and-m :options options
                                 :hypos hypos))

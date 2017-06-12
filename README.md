@@ -4,7 +4,7 @@ Martin Kersner, <m.kersner@gmail.com>
 This repository contains examples from [Think Bayes](http://greenteapress.com/wp/think-bayes/) book written in Common Lisp.
 
 ## Requirements
-cl-ml requires [asdf](https://gitlab.common-lisp.net/asdf/asdf) to be installed.
+Source code from this repository requires [asdf](https://gitlab.common-lisp.net/asdf/asdf) to be installed.
 
 ## Get code
 ```

@@ -17,4 +17,5 @@
                             (:file "monty")
                             (:file "cookie")
                             (:file "m-and-m")
-                            (:file "dice")))
+                            (:file "dice")
+                            (:file "train")))

@@ -9,11 +9,16 @@
 (defun iota (upper-limit &optional (start 0))
   (iota-rec nil (+ (1- upper-limit) start) start))
 
-(setf hypos (iota 1000 1))
+(setf upper-bound '(500 1000 2000))
 (setf alpha 1)
-(setf tr (make-instance 'train
-                        :hypos hypos
-                        :alpha alpha))
-(setf observations '(30 60 90))
-(mapcar #'(lambda (v) (update tr v)) observations)
-(print (mean tr))
+
+(mapcar #'(lambda (upper) (progn
+                            (setf hypos (iota upper 1))
+                            (setf tr (make-instance 'train
+                                                    :hypos hypos
+                                                    :alpha alpha))
+                            
+                            (setf observations '(30 60 90))
+                            (mapcar #'(lambda (v) (update tr v)) observations)
+                            (print (mean tr))))
+        upper-bound)

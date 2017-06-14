@@ -11,13 +11,17 @@
   (let ((hypos-lst (slot-value tr 'hypos-lst))
         (hypos (make-hash-table)))
 
-    (mapcar #'(lambda (h) (setf (gethash h hypos) (expt h (- (get-alpha tr))))) hypos-lst)
+    (mapcar #'(lambda (h) (setf (gethash h hypos) (expt (/ 1 h) (get-alpha tr)))) hypos-lst)
+    ;(maphash #'(lambda (h val-prob-lst) (set-value tr h 1)) hypos)
+    (maphash #'(lambda (h val-prob-lst) (set-value tr h (expt (/ 1 h) (get-alpha tr)))) hypos)
+
     (setf (get-hypos tr) hypos)
     (normalize tr)))
 
 (defmethod mean ((tr train))
   (let ((total 0)
-        (hypos (get-hypos tr)))
+        (hypos (get-val-prob tr)))
 
     (maphash #'(lambda (h p) (setf total (+ total (* h p)))) hypos)
+
     total))

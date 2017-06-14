@@ -23,6 +23,7 @@ Before running any code from this repository you must run following code.
 
 ## Chapter 2 - Computational Statistics
 ### Cookie Problem
+[solution](https://github.com/martinkersner/cl-think-bayes/blob/master/cookie.lisp), [example](https://github.com/martinkersner/cl-think-bayes/blob/master/cookie-example.lisp)
 ```common-lisp
 (setf hypos '((bowl1
                 ((vanilla 0.75)
@@ -36,6 +37,7 @@ Before running any code from this repository you must run following code.
 (print-solution cp)
 ```
 ### Monty Hall Problem
+[solution](https://github.com/martinkersner/cl-think-bayes/blob/master/monty.lisp), [example](https://github.com/martinkersner/cl-think-bayes/blob/master/monty-example.lisp)
 ```common-lisp
 (setf hypos '(A B C))
 (setf m (make-instance 'monty :hypos hypos))
@@ -44,6 +46,7 @@ Before running any code from this repository you must run following code.
 ```
 
 ### M&M Problem
+[solution](https://github.com/martinkersner/cl-think-bayes/blob/master/m-and-m.lisp), [example](https://github.com/martinkersner/cl-think-bayes/blob/master/m-and-m-example.lisp)
 ```common-lisp
 (setf options '((mix94
                  ((brown  30)
@@ -71,7 +74,8 @@ Before running any code from this repository you must run following code.
 ```
 
 ## Chapter 3 - Estimation
-### Dice
+### Dice Problem
+[solution](https://github.com/martinkersner/cl-think-bayes/blob/master/dice.lisp), [example](https://github.com/martinkersner/cl-think-bayes/blob/master/dice-example.lisp)
 ```common-lisp
 (setf hypos '(4 6 8 12 20))
 (setf d (make-instance 'dice :hypos hypos))
@@ -79,4 +83,31 @@ Before running any code from this repository you must run following code.
             (update d v))
         '(6 8 7 7 5 4))
 (print-solution d)
+```
+
+### Locomotive Problem
+[solution](https://github.com/martinkersner/cl-think-bayes/blob/master/train.lisp), [example](https://github.com/martinkersner/cl-think-bayes/blob/master/train-example.lisp)
+```common-lisp
+
+(defun iota-rec (lst val lower-limit)
+  (if (>= val lower-limit)
+    (iota-rec (push val lst) (1- val) lower-limit)
+    lst))
+
+(defun iota (upper-limit &optional (start 0))
+  (iota-rec nil (+ (1- upper-limit) start) start))
+
+(setf upper-bound '(500 1000 2000))
+(setf alpha 1)
+
+(mapcar #'(lambda (upper) (progn
+                            (setf hypos (iota upper 1))
+                            (setf tr (make-instance 'train
+                                                    :hypos hypos
+                                                    :alpha alpha))
+                            
+                            (setf observations '(30 60 90))
+                            (mapcar #'(lambda (v) (update tr v)) observations)
+                            (print (mean tr))))
+        upper-bound)
 ```

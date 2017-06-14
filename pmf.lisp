@@ -45,7 +45,7 @@
 (defgeneric normalize (pmf &optional fraction)
   (:documentation "fraction: what the total should be after normalization"))
 
-(defmethod normalize ((pmf probability-mass-function) &optional (fraction 1))
+(defmethod normalize ((pmf probability-mass-function) &optional (fraction 1.0))
   (let* ((prob-sum (total pmf))
          (factor (/ fraction prob-sum)))
 

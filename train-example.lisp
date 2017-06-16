@@ -20,5 +20,6 @@
                             
                             (setf observations '(30 60 90))
                             (mapcar #'(lambda (v) (update tr v)) observations)
-                            (print (mean tr))))
+                            (format t "~%mean ~F~%90 % credible interval: (~F ~F)"
+                                    (mean tr) (percentile tr 5) (percentile tr 95))))
         upper-bound)

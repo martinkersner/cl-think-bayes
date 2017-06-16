@@ -18,4 +18,5 @@
                             (:file "cookie")
                             (:file "m-and-m")
                             (:file "dice")
+                            (:file "percentile")
                             (:file "train")))

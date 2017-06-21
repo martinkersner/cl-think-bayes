@@ -1,4 +1,4 @@
-# Commong Lisp Think Bayes
+# Common Lisp Think Bayes
 Martin Kersner, <m.kersner@gmail.com>
 
 This repository contains examples from [Think Bayes](http://greenteapress.com/wp/think-bayes/) book written in Common Lisp.

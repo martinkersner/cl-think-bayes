@@ -62,3 +62,10 @@
   (if pred
     prob 
     nil))
+
+(defgeneric cdf (pmf)
+  (:documentation ""))
+
+(defmethod cdf ((pmf probability-mass-function))
+  (make-instance 'cumulative-distribution-function
+                 :pmf (get-val-prob pmf)))

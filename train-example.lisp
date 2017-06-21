@@ -20,6 +20,7 @@
                             
                             (setf observations '(30 60 90))
                             (mapcar #'(lambda (v) (update tr v)) observations)
+                            (setf cdf-train (cdf tr))
                             (format t "~%mean ~F~%90 % credible interval: (~F ~F)"
-                                    (mean tr) (percentile tr 5) (percentile tr 95))))
+                                    (mean tr) (percentile cdf-train 0.05) (percentile cdf-train 0.95))))
         upper-bound)
